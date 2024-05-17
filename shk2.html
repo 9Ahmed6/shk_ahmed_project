@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سيرة الشيخ أحمد ود إبراهيم</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #f4f4f4;
+            padding: 1em 0;
+            text-align: center;
+        }
+        section {
+            padding: 2em;
+            border-bottom: 1px solid #ddd;
+        }
+        h2 {
+            color: #333;
+            cursor: pointer; /* Make the headings look clickable */
+        }
+        p {
+            display: none; /* Initially hide the paragraphs */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>سيرة الشيخ أحمد ود إبراهيم</h1>
+    </header>
+    <main>
+        <section id="مقدمة">
+            <h2>مقدمة</h2>
+            <p>... محتوى المقدمة ...</p>
+        </section>
+        <section id="اسمه_ونسبه">
+            <h2>اسمه ونسبه</h2>
+            <p>... محتوى اسمه ونسبه ...</p>
+        </section>
+        <section id="مولده_ونشأته_وتعلمه">
+            <h2>مولده ونشأته وتعلمه</h2>
+            <p>... محتوى مولده ونشأته وتعلمه ...</p>
+        </section>
+        <section id="تصوفه_وطريقته">
+            <h2>تصوفه وطريقته</h2>
+            <p>... محتوى تصوفه وطريقته ...</p>
+        </section>
+        <section id="مهنته_وعمله">
+            <h2>مهنته وعمله</h2>
+            <p>... محتوى مهنته وعمله ...</p>
+        </section>
+        <section id="مفهوم_العبادة_عند_شيخنا_أحمد_ود_إبراهيم">
+            <h2>مفهوم العبادة عند شيخنا أحمد ود إبراهيم</h2>
+            <p>... محتوى مفهوم العبادة ...</p>
+        </section>
+        <section id="زواجه">
+            <h2>زواجه</h2>
+            <p>... محتوى زواجه ...</p>
+        </section>
+        <section id="ذريته">
+            <h2>ذريته</h2>
+            <p>... محتوى ذريته ...</p>
+        </section>
+        <section id="دوره_في_خدمة_المجتمع">
+            <h2>دوره في خدمة المجتمع</h2>
+            <p>... محتوى دوره في خدمة المجتمع ...</p>
+        </section>
+        <section id="الاهتمام_بالأطفال_وتعليمهم">
+            <h2>الاهتمام بالأطفال وتعليمهم</h2>
+            <p>... محتوى الاهتمام بالأطفال وتعليمهم ...</p>
+        </section>
+        <section id="الاهتمام_بالمرأة_وتعليمها">
+            <h2>الاهتمام بالمرأة وتعليمها</h2>
+            <p>... محتوى الاهتمام بالمرأة وتعليمها ...</p>
+        </section>
+        <section id="مفهوم_الحرية_عند_شيخنا_أحمد_ود_إبراهيم">
+            <h2>مفهوم الحرية عند شيخنا أحمد ود إبراهيم</h2>
+            <p>... محتوى مفهوم الحرية ...</p>
+        </section>
+        <section id="الاهتمام_بقضايا_الأمة_الإسلامية">
+            <h2>الاهتمام بقضايا الأمة الإسلامية</h2>
+            <p>... محتوى الاهتمام بقضايا الأمة الإسلامية ...</p>
+        </section>
+        <section id="من_أقواله_رحمه_الله">
+            <h2>من أقواله رحمه الله</h2>
+            <p>... محتوى من أقواله ...</p>
+        </section>
+        <section id="ورعه">
+            <h2>ورعه</h2>
+            <p>... محتوى ورعه ...</p>
+        </section>
+        <section id="تواضعه">
+            <h2>تواضعه</h2>
+            <p>... محتوى تواضعه ...</p>
+        </section>
+        <section id="وفاته">
+            <h2>وفاته</h2>
+            <p>... محتوى وفاته ...</p>
+        </section>
+        <section id="خاتمة">
+            <h2>خاتمة</h2>
+            <p>... محتوى خاتمة ...</p>
+        </section>
+        <section id="شجرة_النسب">
+            <h2>شجرة النسب</h2>
+            <p>... محتوى شجرة النسب ...</p>
+        </section>
+        <section id="ضريح_الشيخ_محمد_ود_ابراهيم_الأبكراوي">
+            <h2>ضريح الشيخ محمد ود ابراهيم الأبكراوي</h2>
+            <p>... محتوى ضريح الشيخ ...</p>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                const heading = section.querySelector('h2');
+                const content = section.querySelector('p');
+                
+                heading.addEventListener('click', function() {
+                    // Toggle the display of the paragraph
+                    if (content.style.display === 'none' || content.style.display === '') {
+                        content.style.display = 'block';
+                    } else {
+                        content.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
