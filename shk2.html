@@ -21,13 +21,13 @@
         section {
             padding: 2em;
             border-bottom: 1px solid #ddd;
+            display: none; /* Initially hide all sections */
         }
         h2 {
             color: #333;
-            cursor: pointer; /* Make the headings look clickable */
         }
-        p {
-            display: none; /* Initially hide the paragraphs */
+        section.active {
+            display: block; /* Show only active section */
         }
     </style>
 </head>
@@ -121,17 +121,25 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const sections = document.querySelectorAll('section');
+            let currentSection = 0;
 
-            sections.forEach(section => {
-                const heading = section.querySelector('h2');
-                const content = section.querySelector('p');
-                
-                heading.addEventListener('click', function() {
-                    // Toggle the display of the paragraph
-                    if (content.style.display === 'none' || content.style.display === '') {
-                        content.style.display = 'block';
-                    } else {
-                        content.style.display = 'none';
+            // Show the first section initially
+            sections[currentSection].classList.add('active');
+
+            window.addEventListener('scroll', function() {
+                const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+                const viewportHeight = window.innerHeight;
+
+                sections.forEach((section, index) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+
+                    if (scrollPosition + viewportHeight >= sectionTop && scrollPosition < sectionBottom) {
+                        if (index !== currentSection) {
+                            sections[currentSection].classList.remove('active');
+                            section.classList.add('active');
+                            currentSection = index;
+                        }
                     }
                 });
             });
