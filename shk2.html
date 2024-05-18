@@ -3,147 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سيرة الشيخ أحمد ود إبراهيم</title>
+    <!-- <title>سيرة الشيخ أحمد ود إبراهيم</title> -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap');
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Readex Pro", sans-serif;
+            font-optical-sizing: auto;
+            /* font-weight: <weight>; */
+            font-style: normal;
+            font-variation-settings: "HEXP" 0;
             direction: rtl;
             text-align: right;
             line-height: 1.6;
             margin: 0;
             padding: 0;
+            background-color: #f3f4f6;
+            color: #333;
         }
         header {
-            background: #f4f4f4;
+            background: #004d40;
+            color: #fff;
             padding: 1em 0;
             text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        nav {
+            display: none; /* Hide nav by default */
+            flex-direction: column;
+            background: #004d40;
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            z-index: 1000;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 1em;
+            text-align: center;
+            border-top: 1px solid #00695c;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background: #00695c;
+        }
+        .menu-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            background: #004d40;
+            padding: 0.5em;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1001;
+        }
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 5px 0;
+        }
+        .main-photo-section {
+            text-align: center;
+            padding: 2em 0;
+            background-color: white;
+        }
+        .main-photo-section img {
+            width: 150px;
+            height: 150px;
+            /* border-radius: 50%; */
         }
         section {
             padding: 2em;
             border-bottom: 1px solid #ddd;
             opacity: 0; /* Initially hide all sections */
             transition: opacity 1s; /* Smooth fade-in transition */
-            height: 100vh; /* Make each section full viewport height */
+            min-height: 100vh; /* Make each section full viewport height */
         }
         section.active {
             opacity: 1; /* Fade-in effect */
         }
+        h1 {
+            font-family: 'Scheherazade', serif;
+            font-size: 2.5em;
+            margin: 0;
+        }
         h2 {
-            color: #333;
+            color: #004d40;
+            font-size: 1.75em;
+        }
+        .pattern-border {
+            border-top: 4px solid #004d40;
+            border-bottom: 4px solid #004d40;
+            padding: 1em 0;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2em 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #004d40;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-entry {
+            padding: 1em 2em;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .timeline-entry.left {
+            left: 0;
+        }
+        .timeline-entry.right {
+            left: 50%;
+        }
+        .timeline-entry::before {
+            content: ' ';
+            position: absolute;
+            top: 15px;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #004d40;
+            border: 4px solid #FFF;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-entry.left::before {
+            left: -17px;
+        }
+
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .timeline::after {
+                left: 20px;
+            }
+            .timeline-entry {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 15px;
+            }
+            .timeline-entry.left, .timeline-entry.right {
+                left: 0;
+            }
+            .timeline-entry::before {
+                left: 0;
+                right: auto;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            section {
+                padding: 1em;
+            }
+            .timeline-entry {
+                padding: 1em;
+                padding-left: 40px;
+            }
+            .timeline-entry::before {
+                left: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>سيرة الشيخ أحمد ود إبراهيم</h1>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h1>لمحات من سيرة الشيخ أحمد ود إبراهيم</h1>
+        <h5>اعداد : محمد أحمد محمد ابراهيم الأبكراوي 
+            <br>arak22116@gmail.com
+           </h5>
+        <nav>
+            <a href="#مقدمة">مقدمة</a>
+            <a href="#اسمه_ونسبه">اسمه ونسبه</a>
+            <a href="#مولده_ونشأته_وتعلمه">مولده ونشأته وتعلمه</a>
+            <a href="#تصوفه_وطريقته">تصوفه وطريقته</a>
+            <a href="#مهنته_وعمله">مهنته وعمله</a>
+            <a href="#مفهوم_العبادة_عند_شيخنا_أحمد_ود_إبراهيم">مفهوم العبادة</a>
+            <a href="#زواجه">زواجه</a>
+            <a href="#ذريته">ذريته</a>
+            <a href="#دوره_في_خدمة_المجتمع">خدمة المجتمع</a>
+            <a href="#الاهتمام_بالأطفال_وتعليمهم">الأطفال وتعليمهم</a>
+            <a href="#الاهتمام_بالمرأة_وتعليمها">المرأة وتعليمها</a>
+            <a href="#مفهوم_الحرية_عند_شيخنا_أحمد_ود_إبراهيم">مفهوم الحرية</a>
+            <a href="#الاهتمام_بقضايا_الأمة_الإسلامية">قضايا الأمة الإسلامية</a>
+            <a href="#من_أقواله_رحمه_الله">من أقواله</a>
+            <a href="#ورعه">ورعه</a>
+            <a href="#تواضعه">تواضعه</a>
+            <a href="#وفاته">وفاته</a>
+            <a href="#خاتمة">خاتمة</a>
+            <a href="#شجرة_النسب">شجرة النسب</a>
+            <a href="#ضريح_الشيخ_محمد_ود_ابراهيم_الأبكراوي">ضريح الشيخ</a>
+        </nav>
     </header>
     <main>
-        <section id="مقدمة">
+        <!-- <section class="main-photo-section"> -->
+            <img class="main-photo-section" src="shk_ahmed.PNG" alt="صورة الشيخ أحمد ود إبراهيم">
+        <!-- </section> -->
+        <section id="مقدمة" class="pattern-border">
             <h2>مقدمة</h2>
-            <p>... محتوى المقدمة ...</p>
+            <p>... محتوى المقدمة ...
+                
+            </p>
         </section>
-        <section id="اسمه_ونسبه">
+        <section id="اسمه_ونسبه" class="pattern-border">
             <h2>اسمه ونسبه</h2>
             <p>... محتوى اسمه ونسبه ...</p>
         </section>
-        <section id="مولده_ونشأته_وتعلمه">
+        <section id="مولده_ونشأته_وتعلمه" class="pattern-border">
             <h2>مولده ونشأته وتعلمه</h2>
             <p>... محتوى مولده ونشأته وتعلمه ...</p>
         </section>
-        <section id="تصوفه_وطريقته">
+        <section id="تصوفه_وطريقته" class="pattern-border">
             <h2>تصوفه وطريقته</h2>
-            <p>... محتوى تصوفه وطريقته ...</p>
+            <div class="timeline">
+                <div class="timeline-entry left">
+                    <h3>النقطة الزمنية الأولى</h3>
+                    <p>... محتوى النقطة الزمنية الأولى ...</p>
+                </div>
+                <div class="timeline-entry right">
+                    <h3>النقطة الزمنية الثانية</h3>
+                    <p>... محتوى النقطة الزمنية الثانية ...</p>
+                </div>
+                <!-- Add more timeline entries as needed -->
+            </div>
         </section>
-        <section id="مهنته_وعمله">
-            <h2>مهنته وعمله</h2>
-            <p>... محتوى مهنته وعمله ...</p>
-        </section>
-        <section id="مفهوم_العبادة_عند_شيخنا_أحمد_ود_إبراهيم">
-            <h2>مفهوم العبادة عند شيخنا أحمد ود إبراهيم</h2>
-            <p>... محتوى مفهوم العبادة ...</p>
-        </section>
-        <section id="زواجه">
-            <h2>زواجه</h2>
-            <p>... محتوى زواجه ...</p>
-        </section>
-        <section id="ذريته">
-            <h2>ذريته</h2>
-            <p>... محتوى ذريته ...</p>
-        </section>
-        <section id="دوره_في_خدمة_المجتمع">
-            <h2>دوره في خدمة المجتمع</h2>
-            <p>... محتوى دوره في خدمة المجتمع ...</p>
-        </section>
-        <section id="الاهتمام_بالأطفال_وتعليمهم">
-            <h2>الاهتمام بالأطفال وتعليمهم</h2>
-            <p>... محتوى الاهتمام بالأطفال وتعليمهم ...</p>
-        </section>
-        <section id="الاهتمام_بالمرأة_وتعليمها">
-            <h2>الاهتمام بالمرأة وتعليمها</h2>
-            <p>... محتوى الاهتمام بالمرأة وتعليمها ...</p>
-        </section>
-        <section id="مفهوم_الحرية_عند_شيخنا_أحمد_ود_إبراهيم">
-            <h2>مفهوم الحرية عند شيخنا أحمد ود إبراهيم</h2>
-            <p>... محتوى مفهوم الحرية ...</p>
-        </section>
-        <section id="الاهتمام_بقضايا_الأمة_الإسلامية">
-            <h2>الاهتمام بقضايا الأمة الإسلامية</h2>
-            <p>... محتوى الاهتمام بقضايا الأمة الإسلامية ...</p>
-        </section>
-        <section id="من_أقواله_رحمه_الله">
-            <h2>من أقواله رحمه الله</h2>
-            <p>... محتوى من أقواله ...</p>
-        </section>
-        <section id="ورعه">
-            <h2>ورعه</h2>
-            <p>... محتوى ورعه ...</p>
-        </section>
-        <section id="تواضعه">
-            <h2>تواضعه</h2>
-            <p>... محتوى تواضعه ...</p>
-        </section>
-        <section id="وفاته">
-            <h2>وفاته</h2>
-            <p>... محتوى وفاته ...</p>
-        </section>
-        <section id="خاتمة">
-            <h2>خاتمة</h2>
-            <p>... محتوى خاتمة ...</p>
-        </section>
-        <section id="شجرة_النسب">
-            <h2>شجرة النسب</h2>
-            <p>... محتوى شجرة النسب ...</p>
-        </section>
-        <section id="ضريح_الشيخ_محمد_ود_ابراهيم_الأبكراوي">
-            <h2>ضريح الشيخ محمد ود ابراهيم الأبكراوي</h2>
-            <p>... محتوى ضريح الشيخ ...</p>
-        </section>
-    </main>
+        <!-- Continue with the rest of the sections similarly -->
+    </section>
+    <section id="مهنته_وعمله" class="pattern-border">
+        <h2>مهنته وعمله</h2>
+        <p>... محتوى مهنته وعمله ...</p>
+    </section>
+    <section id="مفهوم_العبادة_عند_شيخنا_أحمد_ود_إبراهيم" class="pattern-border">
+        <h2>مفهوم العبادة عند شيخنا أحمد ود إبراهيم</h2>
+        <p>... محتوى مفهوم العبادة ...</p>
+    </section>
+    <section id="زواجه" class="pattern-border">
+        <h2>زواجه</h2>
+        <p>... محتوى زواجه ...</p>
+    </section>
+    <section id="ذريته" class="pattern-border">
+        <h2>ذريته</h2>
+        <p>... محتوى ذريته ...</p>
+    </section>
+    <section id="دوره_في_خدمة_المجتمع" class="pattern-border">
+        <h2>دوره في خدمة المجتمع</h2>
+        <p>... محتوى دوره في خدمة المجتمع ...</p>
+    </section>
+    <section id="الاهتمام_بالأطفال_وتعليمهم" class="pattern-border">
+        <h2>الاهتمام بالأطفال وتعليمهم</h2>
+        <p>... محتوى الاهتمام بالأطفال وتعليمهم ...</p>
+    </section>
+    <section id="الاهتمام_بالمرأة_وتعليمها" class="pattern-border">
+        <h2>الاهتمام بالمرأة وتعليمها</h2>
+        <p>... محتوى الاهتمام بالمرأة وتعليمها ...</p>
+    </section>
+    <section id="مفهوم_الحرية_عند_شيخنا_أحمد_ود_إبراهيم" class="pattern-border">
+        <h2>مفهوم الحرية عند شيخنا أحمد ود إبراهيم</h2>
+        <p>... محتوى مفهوم الحرية ...</p>
+    </section>
+    <section id="الاهتمام_بقضايا_الأمة_الإسلامية" class="pattern-border">
+        <h2>الاهتمام بقضايا الأمة الإسلامية</h2>
+        <p>... محتوى الاهتمام بقضايا الأمة الإسلامية ...</p>
+    </section>
+    <section id="من_أقواله_رحمه_الله" class="pattern-border">
+        <h2>من أقواله رحمه الله</h2>
+        <p>... محتوى من أقواله ...</p>
+    </section>
+    <section id="ورعه" class="pattern-border">
+        <h2>ورعه</h2>
+        <p>... محتوى ورعه ...</p>
+    </section>
+    <section id="تواضعه" class="pattern-border">
+        <h2>تواضعه</h2>
+        <p>... محتوى تواضعه ...</p>
+    </section>
+    <section id="وفاته" class="pattern-border">
+        <h2>وفاته</h2>
+        <p>... محتوى وفاته ...</p>
+    </section>
+    <section id="خاتمة" class="pattern-border">
+        <h2>خاتمة</h2>
+        <p>... محتوى خاتمة ...</p>
+    </section>
+    <section id="شجرة_النسب" class="pattern-border">
+        <h2>شجرة النسب</h2>
+        <p>... محتوى شجرة النسب ...</p>
+    </section>
+    <section id="ضريح_الشيخ_محمد_ود_ابراهيم_الأبكراوي" class="pattern-border">
+        <h2>ضريح الشيخ محمد ود ابراهيم الأبكراوي</h2>
+        <p>... محتوى ضريح الشيخ ...</p>
+    </section>
+</main>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const sections = document.querySelectorAll('section');
+<script>
+    function toggleMenu() {
+        const nav = document.querySelector('nav');
+        nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
+    }
 
-            const options = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
+    document.addEventListener("DOMContentLoaded", function() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
 
-            const observer = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    } else {
-                        entry.target.classList.remove('active');
-                    }
-                });
-            }, options);
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-            sections.forEach(section => {
-                observer.observe(section);
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
             });
         });
-    </script>
+    });
+</script>
 </body>
 </html>
+
